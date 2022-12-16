@@ -1,8 +1,11 @@
 import { FlatList, StyleSheet, View, Text } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Card from "./Card";
+import { useSelector } from "react-redux";
 
-const Body = ({ data }) => {
+const Body = () => {
+  const { productList } = useSelector((state) => state.product);
+
   const renderProduct = ({ item }) => <Card product={item} />;
 
   return (
@@ -10,7 +13,7 @@ const Body = ({ data }) => {
       <FlatList
         numColumns={2}
         keyExtractor={(item) => item.id.toString()}
-        data={data}
+        data={productList}
         renderItem={renderProduct}
       />
     </View>
