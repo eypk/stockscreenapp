@@ -3,15 +3,16 @@ import React from "react";
 
 const Card = (item) => {
   const { product } = item;
+
   return (
     <View style={styles.card}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: product.imgURL }} style={styles.image} />
+        <Image source={{ uri: product.image }} style={styles.image} />
       </View>
       <View style={styles.descriptionConatiner}>
         <Text style={styles.title}>{product.title}</Text>
         <Text style={styles.price}>{product.price}</Text>
-        {product.inStock && <Text style={styles.inStock}>STOKTA YOK</Text>}
+        <Text style={styles.rate}>Rate: {product.rating.rate}</Text>
       </View>
     </View>
   );
@@ -48,5 +49,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   price: { marginVertical: 5, color: "#808080" },
-  inStock: { color: "red", textAlign: "right", fontWeight: "bold" },
+  rate: { color: "grey", textAlign: "right", fontSize: 12 },
 });
